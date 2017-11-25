@@ -1,22 +1,22 @@
-package TPO.forms;
+package TPO.vista;
 
-import TPO.impl.Admin;
+import TPO.controlador.Mercado;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class frmModificarUser extends JFrame {
+public class ModificarUsuarioView extends JFrame {
 
 	private JPanel contentPane;
 	@SuppressWarnings("unused")
-	private Admin sistema;
+	private Mercado sistema;
 
 	/**
 	 * Create the frame.
 	 */
-	public frmModificarUser(Admin a){
+	public ModificarUsuarioView(Mercado a){
 		sistema = a;
 		initGUI();
 		

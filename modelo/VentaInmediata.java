@@ -1,4 +1,4 @@
-package TPO.impl;
+package TPO.modelo;
 
 
 public class VentaInmediata extends Publicacion {

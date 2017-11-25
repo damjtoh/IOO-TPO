@@ -1,8 +1,9 @@
-package TPO.forms;
-
-import TPO.impl.Admin;
+package TPO.vista;
 
 
+
+
+import TPO.controlador.Mercado;
 
 import java.awt.EventQueue;
 
@@ -11,11 +12,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 @SuppressWarnings("serial")
-public class frmMain extends JFrame {
+public class MainView extends JFrame {
 
 	private JPanel contentPane;
 	@SuppressWarnings("unused")
-	private Admin sistema;
+	private Mercado sistema;
 
 	/**
 	 * Launch the application.
@@ -24,7 +25,7 @@ public class frmMain extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frmMain frame = new frmMain();
+					MainView frame = new MainView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,8 +37,8 @@ public class frmMain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public frmMain(){};
-	public frmMain(Admin a) {
+	public MainView(){};
+	public MainView(Mercado a) {
 		super();
 		initGUI();
 		sistema = a;

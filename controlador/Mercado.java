@@ -1,11 +1,17 @@
-package TPO.impl;
+package TPO.controlador;
 
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import TPO.modelo.Publicacion;
+import TPO.modelo.Subasta;
+import TPO.modelo.Transaccion;
+import TPO.modelo.Usuario;
+import TPO.modelo.VentaInmediata;
+
 @SuppressWarnings("unused")
-public class Admin {
+public class Mercado {
 
 	 ArrayList<Usuario> usuarios;
 	 ArrayList<Publicacion> publicaciones;
@@ -14,7 +20,7 @@ public class Admin {
 	 
 	 private static Usuario adminSys = new Usuario("Manolo Lama", "Calle siempre viva","admin@.c","admin","admin");
 	
-	public Admin() {
+	public Mercado() {
 		// TODO Auto-generated constructor stub
 		usuarios = new ArrayList<Usuario>();
 		publicaciones = new ArrayList<Publicacion>();

@@ -1,4 +1,4 @@
-package TPO.impl;
+package TPO.modelo;
 
 import java.time.LocalDate;
 import java.util.Collection;

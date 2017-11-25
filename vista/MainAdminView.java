@@ -1,8 +1,4 @@
-package TPO.forms;
-
-import TPO.impl.Admin;
-import TPO.impl.Publicacion;
-import TPO.impl.Usuario;
+package TPO.vista;
 
 
 
@@ -10,6 +6,11 @@ import TPO.impl.Usuario;
 
 
 
+
+
+import TPO.controlador.Mercado;
+import TPO.modelo.Publicacion;
+import TPO.modelo.Usuario;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -34,17 +35,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
-public class frmMainAdmin extends JFrame {
+public class MainAdminView extends JFrame {
 
 	private JList<String> listUser;
 	private JList<String> listPublis;
 	private JPanel contentPane;
-	private Admin sistema;
+	private Mercado sistema;
 
 	/**
 	 * Create the frame.
 	 */
-	public frmMainAdmin(Admin a) {
+	public MainAdminView(Mercado a) {
 		super();
 		sistema = a;
 		
@@ -98,7 +99,7 @@ public class frmMainAdmin extends JFrame {
 						if(sistema.bajaUsuario(usr)){
 							JOptionPane.showMessageDialog(null, "El usuario"+usr+" ha sido borrado exitosamente");
 							dispose();
-							frmMainAdmin n = new frmMainAdmin(sistema);
+							MainAdminView n = new MainAdminView(sistema);
 							n.setVisible(true);
 						}else
 							JOptionPane.showMessageDialog(null, "No se ha podido borrar el usuario "+usr);
@@ -117,7 +118,7 @@ public class frmMainAdmin extends JFrame {
 			JMenuItem mntmAltaUsuario = new JMenuItem("Alta usuario");
 			mntmAltaUsuario.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					frmAltaUser n = new frmAltaUser(sistema);
+					AltaUsuarioView n = new AltaUsuarioView(sistema);
 					n.setVisible(true);
 					dispose();
 				}
