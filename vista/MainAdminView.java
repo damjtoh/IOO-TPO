@@ -1,13 +1,5 @@
 package TPO.vista;
 
-
-
-
-
-
-
-
-
 import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
 import TPO.modelo.Usuario;

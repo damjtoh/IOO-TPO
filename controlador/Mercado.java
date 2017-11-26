@@ -19,6 +19,8 @@ public class Mercado {
 	 private Usuario usuarioActivo;
 	 
 	 private static Usuario adminSys = new Usuario("Manolo Lama", "Calle siempre viva","admin@.c","admin","admin");
+	 private static Usuario testUser = new Usuario("Manolo Lama", "Calle siempre viva","admin@.c","test","test");
+	 private static Publicacion testPublicacion = new VentaInmediata(testUser, "Publicacion de prueba", "Esto es una descripcion", "CREDITO", "ninguna", false, "", "", "", 24);
 	
 	public Mercado() {
 		// TODO Auto-generated constructor stub
@@ -26,6 +28,9 @@ public class Mercado {
 		publicaciones = new ArrayList<Publicacion>();
 		transacciones = new ArrayList<Transaccion>();
 		usuarios.add(adminSys);
+		usuarios.add(testUser);
+		publicaciones.add(testPublicacion);
+		System.out.println(this.getPublicaciones().size());
 	}
 	
 	//	User related methods

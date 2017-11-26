@@ -1,5 +1,6 @@
 package TPO.vista;
 import TPO.controlador.Mercado;
+import TPO.vista.MainView;
 
 import java.awt.EventQueue;
 
@@ -89,6 +90,7 @@ public class LoginView extends JFrame {
 							MainAdminView n = new MainAdminView(sistema);
 							n.setVisible(true);
 					}else{
+						System.out.println("No es admin");
 						MainView n = new MainView(sistema);
 						n.setVisible(true);
 					}

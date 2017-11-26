@@ -177,6 +177,10 @@ public abstract class Publicacion {
 	public void setVendedor(Usuario vendedor) {
 		this.vendedor = vendedor;
 	};
+	
+	public String toString() {
+		return this.getTitulo() + "\t\t $" + this.getPrecio();
+	}
 
 	
 	
