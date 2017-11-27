@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JList;
@@ -21,12 +22,15 @@ public class ListadoPublicacionesFrame extends JFrame {
 
 	private JPanel contentPane;
 	private Mercado sistema;
+	private ListadoPublicacionesFrame that = this;
 
 	/**
 	 * Create the frame.
 	 */
 	public ListadoPublicacionesFrame(Mercado a, MainView mainView) {
+		
 		this.sistema = a;
+		
 		setTitle("Listado de publicaciones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -44,7 +48,7 @@ public class ListadoPublicacionesFrame extends JFrame {
 		ArrayList<Publicacion> publicacionesArrayList  = sistema.getPublicaciones();
 		Publicacion[] publicaciones = new Publicacion[publicacionesArrayList.size()];
 		publicacionesArrayList.toArray(publicaciones);
-		JList listadoPublicaciones = new JList(publicaciones);
+		JList<Publicacion> listadoPublicaciones = new JList<Publicacion>(publicaciones);
 		listadoPublicaciones.setBounds(6, 6, 438, 230);
 		contentPane.add(listadoPublicaciones);
 		
@@ -59,6 +63,19 @@ public class ListadoPublicacionesFrame extends JFrame {
 		contentPane.add(btnVolver);
 		
 		JButton btnVerPublicacion = new JButton("Ver publicación");
+		btnVerPublicacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Publicacion currentPublicacion = listadoPublicaciones.getSelectedValue();
+				if (currentPublicacion == null) {
+					JOptionPane.showMessageDialog(null, "Debe seleccionar una publicación");
+				} else {					
+					JFrame verPublicacionFrame = new VerPublicacionFrame(currentPublicacion, that);
+					verPublicacionFrame.setVisible(true);
+					that.setVisible(false);
+					System.out.println("Selected publicacion: "+currentPublicacion.toString());
+				}
+			}
+		});
 		btnVerPublicacion.setBounds(214, 243, 128, 29);
 		contentPane.add(btnVerPublicacion);
 	}
