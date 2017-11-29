@@ -27,6 +27,8 @@ import javax.swing.JTabbedPane;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 @SuppressWarnings("serial")
 public class MainView extends JFrame {
@@ -53,8 +55,21 @@ public class MainView extends JFrame {
 		setResizable(false);
 		setTitle("Mercado");
 
+		// Instanciamos el frame de listado de publicaciones y lo ocultamos
 		JFrame listadoPublicacionesFrame = new ListadoPublicacionesFrame(this.sistema, this);
 		listadoPublicacionesFrame.setVisible(false);
+		listadoPublicacionesFrame.addComponentListener(new ComponentAdapter() {
+//			public void componentHidden(ComponentEvent e) 
+//			{
+//			    /* code run when component hidden*/
+//			}
+			public void componentShown(ComponentEvent e) {
+			    /* code run when component shown */
+			}
+			});
+		//Instanciamos el frame de crear venta y lo ocultamos
+		JFrame crearVentaFrame = new CrearVentaFrame(this.sistema, this);
+		crearVentaFrame.setVisible(false);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -74,11 +89,15 @@ public class MainView extends JFrame {
 			}
 		});
 		
-		JMenuItem mntmMisPublicaciones = new JMenuItem("Mis publicaciones");
-		mnPublicaciones.add(mntmMisPublicaciones);
-		
-		JMenuItem mntmCrearPublicacin = new JMenuItem("Crear publicación");
-		mnPublicaciones.add(mntmCrearPublicacin);
+		JMenuItem mntmCrearPublicacion = new JMenuItem("Crear publicación");
+		mnPublicaciones.add(mntmCrearPublicacion);
+		mntmCrearPublicacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) 
+			{
+				crearVentaFrame.setVisible(true);
+				setVisible(false);
+			}
+		});
 		
 		JMenuItem mntmCrearSubasta = new JMenuItem("Crear subasta");
 		mnPublicaciones.add(mntmCrearSubasta);

@@ -144,6 +144,7 @@ public class Mercado {
 	) {
 		VentaInmediata nuevaVenta = new VentaInmediata(this.usuarioActivo, titulo, descripcion, formaPago, garantia, esGarantiaExtendida, tipoContrato, certificados, tipoPublicacion, precio);
 		publicaciones.add(nuevaVenta);
+		System.out.println("Venta agregada: "+ nuevaVenta.toString());
 	}
 	
 	

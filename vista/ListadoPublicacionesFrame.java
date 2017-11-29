@@ -79,4 +79,8 @@ public class ListadoPublicacionesFrame extends JFrame {
 		btnVerPublicacion.setBounds(214, 243, 128, 29);
 		contentPane.add(btnVerPublicacion);
 	}
+	
+	private void getPublicaciones() {
+		
+	}
 }
