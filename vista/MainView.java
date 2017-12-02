@@ -17,6 +17,7 @@ import javax.swing.JMenuItem;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
@@ -67,9 +68,18 @@ public class MainView extends JFrame {
 			    /* code run when component shown */
 			}
 			});
+		
 		//Instanciamos el frame de crear venta y lo ocultamos
 		JFrame crearVentaFrame = new CrearVentaFrame(this.sistema, this);
 		crearVentaFrame.setVisible(false);
+		
+		//Instanciamos el frame de listado de transaccinoes
+		JFrame transaccionesFrame = new TransaccionesFrame();
+		transaccionesFrame.setVisible(false);
+		
+		//Instanciamos el frame de reputacion
+		JDialog reputacionDialog = new ReputacionDialog();
+		reputacionDialog.setVisible(false);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -107,9 +117,23 @@ public class MainView extends JFrame {
 		
 		JMenuItem mntmMiReputacin = new JMenuItem("Mi reputación");
 		mnPerfil.add(mntmMiReputacin);
+		mntmMiReputacin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) 
+			{
+				reputacionDialog.setVisible(true);
+//				setVisible(false);
+			}
+		});
 		
 		JMenuItem mntmMisTransacciones = new JMenuItem("Mis transacciones");
 		mnPerfil.add(mntmMisTransacciones);
+		mntmMisTransacciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) 
+			{
+				transaccionesFrame.setVisible(true);
+				setVisible(false);
+			}
+		});
 		
 		JMenu mnSalir = new JMenu("Salir");
 		menuBar.add(mnSalir);
