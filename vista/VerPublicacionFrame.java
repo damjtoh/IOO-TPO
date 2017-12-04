@@ -46,7 +46,7 @@ public class VerPublicacionFrame extends JFrame {
 		setBounds(100, 100, 503, 393);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		JPanel publicacionPanel = new PublicacionPanel(publicacion);
+		JPanel publicacionPanel = new PublicacionPanel(publicacion, false);
 		publicacionPanel.setSize(490, 308);
 		publicacionPanel.setLocation(6, 6);
 		contentPane.add(publicacionPanel);

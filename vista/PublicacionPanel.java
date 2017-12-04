@@ -19,6 +19,7 @@ public class PublicacionPanel extends JPanel {
 	private JPanel contentPane;
 	private JTextField txtTitulo;
 	private JTextField txtPrecio;
+	private JTextArea txtrDescripcion;
 	private JTextField txtFormaPago;
 	private JTextField txtGarantia;
 	private JTextField txtTipoContrato;
@@ -92,7 +93,7 @@ public class PublicacionPanel extends JPanel {
 		add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
-		JTextArea txtrDescripcion = new JTextArea();
+		txtrDescripcion = new JTextArea();
 		txtrDescripcion.setText(descripcion);
 		txtrDescripcion.setBounds(6, 73, 474, 74);
 		add(txtrDescripcion);
@@ -114,13 +115,13 @@ public class PublicacionPanel extends JPanel {
 		txtGarantia.setColumns(10);
 		
 		txtTipoContrato = new JTextField();
-		txtTipoContrato.setText(publicacion.getTipoContrato());
+		txtTipoContrato.setText(tipoContrato);
 		txtTipoContrato.setBounds(93, 233, 143, 26);
 		add(txtTipoContrato);
 		txtTipoContrato.setColumns(10);
 		
 		txtCertificados = new JTextField();
-		txtCertificados.setText(publicacion.getCertificados());
+		txtCertificados.setText(certificados);
 		txtCertificados.setBounds(85, 263, 143, 26);
 		add(txtCertificados);
 		txtCertificados.setColumns(10);
@@ -129,5 +130,34 @@ public class PublicacionPanel extends JPanel {
 		chckbxGarantiaExtendida.setBounds(6, 214, 179, 23);
 		add(chckbxGarantiaExtendida);
 	}
+	
+	public String getTitulo() {
+		return txtTitulo.getText();
+	}
+	
+	public String getDescripcion() {
+		return txtrDescripcion.getText();
+	}
+	
+	public String getFormaPago() {
+		return txtFormaPago.getText();
+	}
 
+	public String getGarantia() {
+		return txtGarantia.getText();
+	}
+	
+	public String getTipoContrato() {
+		return txtTipoContrato.getText();
+	}
+	
+	public String getCertificados() {
+		return txtCertificados.getText();
+	}
+	
+	public Float getPrecio() {
+		return Float.valueOf(txtPrecio.getText());
+	}
+	
+	
 }

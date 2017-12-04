@@ -2,6 +2,7 @@ package TPO.vista;
 
 import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
+import TPO.modelo.VentaInmediata;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -30,15 +31,15 @@ public class CrearVentaFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 490, 400);
 		
-		JPanel publicacionPanel = new PublicacionPanel();
-		publicacionPanel.setSize(490, 308);
-		publicacionPanel.setLocation(6, 6);
-		contentPane.add(publicacionPanel);
-		
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JPanel publicacionPanel = new PublicacionPanel(new VentaInmediata(sistema.getUsuarioActivo(), "", "", "", "", false, "", "", "", 0), true);
+		publicacionPanel.setSize(490, 308);
+		publicacionPanel.setLocation(6, 6);
+		contentPane.add(publicacionPanel);
 		
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
@@ -55,15 +56,15 @@ public class CrearVentaFrame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				sistema.crearPublicacionVentaInmediata(
 					sistema.getUsuarioActivo(), 
-					txtTitulo.getText(), 
-					txtrDescripcion.getText(), 
-					txtFormaPago.getText(), 
-					txtGarantia.getText(), 
-					chckbxGarantiaExtendida.isSelected(), 
-					txtTipoContrato.getText(), 
-					txtCertificados.getText(), 
+					((PublicacionPanel) publicacionPanel).getTitulo(),
+					(((PublicacionPanel) publicacionPanel).getDescripcion()),
+					(((PublicacionPanel) publicacionPanel).getFormaPago()),
+					(((PublicacionPanel) publicacionPanel).getGarantia()),
+					true,
+					(((PublicacionPanel) publicacionPanel).getTipoContrato()), 
+					(((PublicacionPanel) publicacionPanel).getCertificados()),
 					"TEST", 
-					Float.valueOf(txtPrecio.getText())
+					(((PublicacionPanel) publicacionPanel).getPrecio())
 				);
 			}
 		});
