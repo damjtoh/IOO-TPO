@@ -38,14 +38,15 @@ Se pide:
   - [ ] Validar el formato de la password
 - [ ] Modificación de usuario
 - [ ] Home usuario
-- [ ] Listado de publicaciones
+- [x] Listado de publicaciones
 - [ ] Ver publicación
-  - [ ] Funcionalidad de comprar
+  - [x] Funcionalidad de comprar
   - [ ] Funcionalidad de ofertar subasta
   - [ ] Funcionalidad de cambiar desde ventaDirecta -> Subasta.
-- [ ] Calificar
 - [ ] Mi reputación
 - [ ] Mis transacciones
+  - [ ] Listado (haciendo Damián)
+  - [ ] Calificar (haciendo Damián)
 - [ ] Crear publicación
   - [ ] Mensaje de exito y que se cierre la ventana
   - [ ] ComboBox con el tipo de publicación, para que se muestren/oculten campos de garantias/certificados
