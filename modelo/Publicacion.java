@@ -10,6 +10,7 @@ public abstract class Publicacion {
 	private Usuario vendedor;
 	private String titulo;
 	private String descripcion;
+	private boolean activo;
 	private LocalDate fechaPub;
 	private LocalDate fechaValido;
 //	protected float precio; // Esto se mueve a ventaInmediata
@@ -46,6 +47,7 @@ public abstract class Publicacion {
 			this.tipoContrato = tipoContrato;
 			this.certificados = certificados;
 		}
+		this.activo = true;
 		this.fechaPub = LocalDate.now().plusDays(30);
 		//falta fecha validez 1 mes desde ahora
 	}
@@ -106,6 +108,14 @@ public abstract class Publicacion {
 
 	public LocalDate getFechaValido() {
 		return fechaValido;
+	}
+	
+	public boolean getActivo() {
+		return this.activo;
+	}
+	
+	public void desactivar() {
+		this.activo = false;
 	}
 
 

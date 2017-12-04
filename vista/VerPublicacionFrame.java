@@ -9,9 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
@@ -40,7 +42,7 @@ public class VerPublicacionFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public VerPublicacionFrame(Publicacion publicacion, ListadoPublicacionesFrame listadoPublicacionesFrame) {
+	public VerPublicacionFrame(Mercado sistema, Publicacion publicacion, ListadoPublicacionesFrame listadoPublicacionesFrame) {
 		setTitle("Ver publicacion");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 503, 393);
@@ -64,6 +66,15 @@ public class VerPublicacionFrame extends JFrame {
 		contentPane.add(btnVolver);
 		
 		JButton btnComprar = new JButton("Comprar");
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				sistema.comprar(publicacion.getIdPub());
+				JOptionPane.showMessageDialog(null, "Articulo comprado con éxito");
+				listadoPublicacionesFrame.setVisible(true);
+				dispose();
+				System.out.println("Cantidad de transacciones: "+sistema.getTransacciones().size());
+			}
+		});
 		btnComprar.setBounds(260, 336, 98, 29);
 		contentPane.add(btnComprar);
 		

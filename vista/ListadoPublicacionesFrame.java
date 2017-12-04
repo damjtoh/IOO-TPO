@@ -49,6 +49,7 @@ public class ListadoPublicacionesFrame extends JFrame {
 	    {
 	        public void componentShown ( ComponentEvent e )
 	        {
+	        	System.out.println("Listado de publicaciones is now showed");
 	        	listadoPublicaciones.setModel(that.getPublicaciones());
 	        }
 
@@ -75,7 +76,7 @@ public class ListadoPublicacionesFrame extends JFrame {
 				if (currentPublicacion == null) {
 					JOptionPane.showMessageDialog(null, "Debe seleccionar una publicación");
 				} else {					
-					JFrame verPublicacionFrame = new VerPublicacionFrame(currentPublicacion, that);
+					JFrame verPublicacionFrame = new VerPublicacionFrame(sistema, currentPublicacion, that);
 					verPublicacionFrame.setVisible(true);
 					that.setVisible(false);
 					System.out.println("Selected publicacion: "+currentPublicacion.toString());
