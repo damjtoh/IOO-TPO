@@ -144,6 +144,7 @@ public class Mercado {
 	) {
 		VentaInmediata nuevaVenta = new VentaInmediata(this.usuarioActivo, titulo, descripcion, formaPago, garantia, esGarantiaExtendida, tipoContrato, certificados, tipoPublicacion, precio);
 		publicaciones.add(nuevaVenta);
+		System.out.println("Venta agregada: "+ nuevaVenta.toString());
 	}
 	
 	
@@ -191,6 +192,7 @@ public class Mercado {
 		if (venta instanceof VentaInmediata && venta != null) {
 			// Creamos la transacción.
 			Transaccion nuevaTransaccion = new Transaccion(this.usuarioActivo, venta);
+			venta.desactivar();
 			transacciones.add(nuevaTransaccion);
 		} else {
 			// Mensaje de error que no existe tal subasta.
@@ -241,7 +243,13 @@ public class Mercado {
 	}
 
 	public ArrayList<Publicacion> getPublicaciones() {
-		return publicaciones;
+		ArrayList<Publicacion> publicacionesActivas = new ArrayList<Publicacion>();
+		for (Publicacion publicacion : publicaciones) {
+			if (publicacion.getActivo() == true) {
+				publicacionesActivas.add(publicacion);
+			}
+		}
+		return publicacionesActivas;
 	}
 
 	public void setPublicaciones(ArrayList<Publicacion> publicaciones) {
@@ -249,7 +257,8 @@ public class Mercado {
 	}
 
 	public ArrayList<Transaccion> getTransacciones() {
-		return transacciones;
+		System.out.println("Transacciones: "+this.transacciones.toString());
+		return this.transacciones;
 	}
 
 	public void setTransacciones(ArrayList<Transaccion> transacciones) {

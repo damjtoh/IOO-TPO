@@ -17,6 +17,7 @@ import javax.swing.JMenuItem;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JDialog;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
@@ -27,6 +28,8 @@ import javax.swing.JTabbedPane;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 
 @SuppressWarnings("serial")
 public class MainView extends JFrame {
@@ -53,8 +56,30 @@ public class MainView extends JFrame {
 		setResizable(false);
 		setTitle("Mercado");
 
+		// Instanciamos el frame de listado de publicaciones y lo ocultamos
 		JFrame listadoPublicacionesFrame = new ListadoPublicacionesFrame(this.sistema, this);
 		listadoPublicacionesFrame.setVisible(false);
+		listadoPublicacionesFrame.addComponentListener(new ComponentAdapter() {
+//			public void componentHidden(ComponentEvent e) 
+//			{
+//			    /* code run when component hidden*/
+//			}
+			public void componentShown(ComponentEvent e) {
+			    /* code run when component shown */
+			}
+			});
+		
+		//Instanciamos el frame de crear venta y lo ocultamos
+		JFrame crearVentaFrame = new CrearVentaFrame(this.sistema, this);
+		crearVentaFrame.setVisible(false);
+		
+		//Instanciamos el frame de listado de transaccinoes
+		JFrame transaccionesFrame = new TransaccionesFrame(sistema);
+		transaccionesFrame.setVisible(false);
+		
+		//Instanciamos el frame de reputacion
+		JDialog reputacionDialog = new ReputacionDialog();
+		reputacionDialog.setVisible(false);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -74,11 +99,15 @@ public class MainView extends JFrame {
 			}
 		});
 		
-		JMenuItem mntmMisPublicaciones = new JMenuItem("Mis publicaciones");
-		mnPublicaciones.add(mntmMisPublicaciones);
-		
-		JMenuItem mntmCrearPublicacin = new JMenuItem("Crear publicación");
-		mnPublicaciones.add(mntmCrearPublicacin);
+		JMenuItem mntmCrearPublicacion = new JMenuItem("Crear publicación");
+		mnPublicaciones.add(mntmCrearPublicacion);
+		mntmCrearPublicacion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) 
+			{
+				crearVentaFrame.setVisible(true);
+				setVisible(false);
+			}
+		});
 		
 		JMenuItem mntmCrearSubasta = new JMenuItem("Crear subasta");
 		mnPublicaciones.add(mntmCrearSubasta);
@@ -88,9 +117,23 @@ public class MainView extends JFrame {
 		
 		JMenuItem mntmMiReputacin = new JMenuItem("Mi reputación");
 		mnPerfil.add(mntmMiReputacin);
+		mntmMiReputacin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) 
+			{
+				reputacionDialog.setVisible(true);
+//				setVisible(false);
+			}
+		});
 		
 		JMenuItem mntmMisTransacciones = new JMenuItem("Mis transacciones");
 		mnPerfil.add(mntmMisTransacciones);
+		mntmMisTransacciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent evt) 
+			{
+				transaccionesFrame.setVisible(true);
+				setVisible(false);
+			}
+		});
 		
 		JMenu mnSalir = new JMenu("Salir");
 		menuBar.add(mnSalir);

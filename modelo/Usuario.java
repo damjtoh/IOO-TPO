@@ -99,4 +99,9 @@ public class Usuario {
 		return promedio; //devuelve el promedio de las notas de las calificaciones de compra
 	}
 	
+	public void calificar(Usuario calificador, Transaccion transaccion, int calificacion) {
+		Calificacion newCalificacion = new Calificacion(calificador, transaccion, calificacion, "");
+		this.calificacionesVenta.add(newCalificacion);
+	}
+	
 }

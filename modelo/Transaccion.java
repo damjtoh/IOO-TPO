@@ -9,6 +9,7 @@ public class Transaccion {
 	private float precioVenta;
 	private LocalDate fechaOperacion;
 	private Publicacion publicacion;
+	private boolean calificada;
 	
 	public Transaccion(
 		Usuario comprador, 
@@ -20,6 +21,7 @@ public class Transaccion {
 		this.precioVenta = publicacion.getPrecio();
 		this.fechaOperacion = LocalDate.now();
 		this.publicacion = publicacion;
+		this.calificada = false;
 	}
 
 	public Usuario getComprador() {
@@ -60,6 +62,18 @@ public class Transaccion {
 
 	public void setFechaOperacion(LocalDate fechaOperacion) {
 		this.fechaOperacion = fechaOperacion;
+	}
+	
+	public String toString() {
+		return "Comprador: "+this.getComprador().getNombre() + "\nVendedor: "+this.getVendedor().getNombre() +"\n Articulo: " + this.getPublicacion().getTitulo();
+	}
+	
+	public boolean getCalificada() {
+		return this.calificada;
+	}
+	
+	public void setCalificada() {
+		this.calificada = true;
 	}
 
 	

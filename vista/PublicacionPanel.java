@@ -94,7 +94,6 @@ public class PublicacionPanel extends JPanel {
 		add(txtPrecio);
 		txtPrecio.setColumns(10);
 		
-		
 		txtrDescripcion = new JTextArea();
 		txtrDescripcion.setText(descripcion);
 		txtrDescripcion.setBounds(6, 73, 474, 74);
@@ -170,7 +169,6 @@ public class PublicacionPanel extends JPanel {
 				
 			}
 		});
-		
 	}
 	
 	public String getTitulo() {
