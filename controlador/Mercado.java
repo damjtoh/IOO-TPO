@@ -257,7 +257,8 @@ public class Mercado {
 	}
 
 	public ArrayList<Transaccion> getTransacciones() {
-		return transacciones;
+		System.out.println("Transacciones: "+this.transacciones.toString());
+		return this.transacciones;
 	}
 
 	public void setTransacciones(ArrayList<Transaccion> transacciones) {

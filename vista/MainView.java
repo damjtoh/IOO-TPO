@@ -73,6 +73,9 @@ public class MainView extends JFrame {
 		JFrame crearVentaFrame = new CrearVentaFrame(this.sistema, this);
 		crearVentaFrame.setVisible(false);
 		
+		//Instanciamos el frame de listado de transaccinoes
+		JFrame transaccionesFrame = new TransaccionesFrame(sistema);
+		transaccionesFrame.setVisible(false);
 		
 		//Instanciamos el frame de reputacion
 		JDialog reputacionDialog = new ReputacionDialog();
@@ -127,8 +130,6 @@ public class MainView extends JFrame {
 		mntmMisTransacciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent evt) 
 			{
-				//Instanciamos el frame de listado de transaccinoes
-				JFrame transaccionesFrame = new TransaccionesFrame(sistema);
 				transaccionesFrame.setVisible(true);
 				setVisible(false);
 			}
