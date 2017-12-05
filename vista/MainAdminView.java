@@ -3,6 +3,9 @@ package TPO.vista;
 import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
 import TPO.modelo.Usuario;
+import vista.AltaUsuarioView;
+import vista.MainAdminView;
+import vista.ModificarUsuarioView;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -89,7 +92,7 @@ public class MainAdminView extends JFrame {
 						JOptionPane.showMessageDialog(null, "No puedes borrarte a ti mismo");
 					else{
 						if(sistema.bajaUsuario(usr)){
-							JOptionPane.showMessageDialog(null, "El usuario"+usr+" ha sido borrado exitosamente");
+							JOptionPane.showMessageDialog(null, "El usuario "+usr+" ha sido borrado exitosamente");
 							dispose();
 							MainAdminView n = new MainAdminView(sistema);
 							n.setVisible(true);
@@ -118,6 +121,13 @@ public class MainAdminView extends JFrame {
 			mnUsuarios.add(mntmAltaUsuario);
 			
 			JMenuItem mntmModificarUsuario = new JMenuItem("Modificar usuario");
+			mntmModificarUsuario.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ModificarUsuarioView n = new ModificarUsuarioView(sistema);
+					n.setVisible(true);
+					dispose();
+				}
+			});
 			mnUsuarios.add(mntmModificarUsuario);
 			
 	}

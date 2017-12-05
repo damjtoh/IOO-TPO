@@ -1,11 +1,14 @@
 package TPO.vista;
 import TPO.controlador.Mercado;
 import TPO.vista.MainView;
+import vista.LoginView;
+import vista.MainAdminView;
 
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -21,7 +24,7 @@ public class LoginView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField usrField;
-	private JTextField passField;
+	private JPasswordField passField;
 	
 	private Mercado sistema;
 
@@ -74,7 +77,7 @@ public class LoginView extends JFrame {
 		usrField.setSize(100, 20);
 		
 		
-		passField = new JTextField();
+		passField = new JPasswordField();
 		contentPane.add(passField);
 		passField.setColumns(10);
 		passField.setBounds(70, 60, 140, 20);
@@ -84,7 +87,8 @@ public class LoginView extends JFrame {
 		btnLoguear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				if(sistema.login(usrField.getText(),passField.getText()))
+				String pwd = String.valueOf(passField.getPassword());
+				if(sistema.login(usrField.getText(), pwd))
 				{
 					if(sistema.sosAdmin(sistema.getUsuarioActivo())){
 							MainAdminView n = new MainAdminView(sistema);
