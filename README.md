@@ -44,9 +44,9 @@ Se pide:
   - [ ] Funcionalidad de ofertar subasta
   - [ ] Funcionalidad de cambiar desde ventaDirecta -> Subasta.
 - [ ] Mi reputación
-- [ ] Mis transacciones
-  - [ ] Listado (haciendo Damián)
-  - [ ] Calificar (haciendo Damián)
+- [x] Mis transacciones
+  - [x] Listado
+  - [x] Calificar
 - [ ] Crear publicación
   - [ ] Mensaje de exito y que se cierre la ventana
   - [ ] ComboBox con el tipo de publicación, para que se muestren/oculten campos de garantias/certificados
