@@ -1,13 +1,16 @@
 package TPO.vista;
 
+import java.awt.Window.Type;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import TPO.controlador.Mercado;
+import vista.MainAdminView;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -38,6 +41,29 @@ public class AltaUsuarioView extends JFrame {
 		
 		initGUI();
 	}
+	
+	private boolean validarPass(String pass){
+		byte cont_charNum = 0;
+		byte cont_charMayus = 0;
+		byte cont_char = 0;
+		char clave;
+		
+		for(byte i = 0; i<pass.length(); i++){
+			cont_char++; //cantidad de caracteres, min 8 max 20
+			clave = pass.charAt(i);
+			String passValue = String.valueOf(clave);
+			if(passValue.matches("[0-9]"))
+				cont_charNum++; // cantidad d nums, minimo 1
+			else if (passValue.matches("[A-Z]"))
+				cont_charMayus++;// cantidad de mayus, minimo 1		
+		}
+		
+		if(cont_charNum>=1 && cont_charMayus>=1 && 8<=cont_char && cont_char<=20)
+			return true;
+		else
+			return false;
+	}
+
 	
 	private void initGUI() {
 
@@ -128,6 +154,7 @@ public class AltaUsuarioView extends JFrame {
 				{
 					public void actionPerformed(ActionEvent evt) 
 					{
+						if(validarPass(passwordField.getText())){
 						sistema.altaUsuario(nombreField.getText(), 
 								domicilioField.getText(), 
 								mailField.getText(), 
@@ -139,7 +166,9 @@ public class AltaUsuarioView extends JFrame {
 						mailField.setText("");
 						userField.setText("");
 						passwordField.setText("");
-						
+						}
+						else
+							JOptionPane.showMessageDialog(null, "La contraseña no cumple las restricciones, minimo 1 num, 1 mayus, entre 8 y 20 caracteres");
 					}
 				});
 			
