@@ -3,6 +3,7 @@ package TPO.vista;
 import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
 import TPO.modelo.VentaInmediata;
+import vista.PublicacionPanel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -48,7 +50,7 @@ public class CrearVentaFrame extends JFrame {
 				dispose();
 			}
 		});
-		btnVolver.setBounds(111, 343, 117, 29);
+		btnVolver.setBounds(111, 303, 117, 29);
 		contentPane.add(btnVolver);
 		
 		JButton btnCrearVenta = new JButton("Crear venta");
@@ -66,9 +68,13 @@ public class CrearVentaFrame extends JFrame {
 					"TEST", 
 					(((PublicacionPanel) publicacionPanel).getPrecio())
 				);
+				
+				JOptionPane.showMessageDialog(null, "Su articulo "+ ((PublicacionPanel) publicacionPanel).getTitulo() +" ha sido publicado correctamente.");
+				ventana.setVisible(true);
+				dispose();
 			}
 		});
-		btnCrearVenta.setBounds(235, 343, 117, 29);
+		btnCrearVenta.setBounds(235, 303, 117, 29);
 		contentPane.add(btnCrearVenta);
 	}
 }

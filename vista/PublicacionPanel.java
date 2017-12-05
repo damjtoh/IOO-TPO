@@ -3,6 +3,7 @@ package TPO.vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -20,15 +21,15 @@ public class PublicacionPanel extends JPanel {
 	private JTextField txtTitulo;
 	private JTextField txtPrecio;
 	private JTextArea txtrDescripcion;
-	private JTextField txtFormaPago;
 	private JTextField txtGarantia;
-	private JTextField txtTipoContrato;
 	private JTextField txtCertificados;
+	private JComboBox<String> comboBox_2;
+	private JComboBox<String> comboBox_1;
 	
 	public PublicacionPanel(Publicacion publicacion, boolean isEmpty) {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setBounds(100, 100, 490, 400);
+		setBounds(100, 100, 490, 358);
 		setLayout(null);
 		
 		String titulo = "";
@@ -49,7 +50,7 @@ public class PublicacionPanel extends JPanel {
 			certificados = publicacion.getCertificados();
 		}
 		
-		JLabel lblTtulo = new JLabel("Título: ");
+		JLabel lblTtulo = new JLabel("Titulo: ");
 		lblTtulo.setBounds(6, 6, 61, 16);
 		add(lblTtulo);
 		
@@ -57,7 +58,7 @@ public class PublicacionPanel extends JPanel {
 		lblPrecio.setBounds(6, 30, 61, 16);
 		add(lblPrecio);
 		
-		JLabel lblDescripcin = new JLabel("Descripción");
+		JLabel lblDescripcin = new JLabel("Descripcion");
 		lblDescripcin.setBounds(6, 52, 75, 16);
 		add(lblDescripcin);
 		
@@ -70,14 +71,14 @@ public class PublicacionPanel extends JPanel {
 		add(lblGarantia);
 		
 		JLabel lblTipoContrato = new JLabel("Tipo contrato");
-		lblTipoContrato.setBounds(6, 238, 91, 16);
+		lblTipoContrato.setBounds(6, 198, 91, 16);
 		add(lblTipoContrato);
 		
 		JLabel lblCertificados = new JLabel("Certificados");
-		lblCertificados.setBounds(6, 268, 97, 16);
+		lblCertificados.setBounds(6, 230, 97, 16);
 		add(lblCertificados);
 		
-		JLabel lblTipoDePubliacin = new JLabel("Tipo de publiación:");
+		JLabel lblTipoDePubliacin = new JLabel("Tipo de publiacion:");
 		lblTipoDePubliacin.setBounds(6, 159, 121, 16);
 		add(lblTipoDePubliacin);
 		
@@ -98,15 +99,15 @@ public class PublicacionPanel extends JPanel {
 		txtrDescripcion.setBounds(6, 73, 474, 74);
 		add(txtrDescripcion);
 		
-		txtFormaPago = new JTextField();
-		txtFormaPago.setText(formasDePago);
-		txtFormaPago.setBounds(337, 25, 143, 26);
-		add(txtFormaPago);
-		txtFormaPago.setColumns(10);
+		comboBox_1 = new JComboBox<String>();
+		comboBox_1.setModel(new DefaultComboBoxModel<String>(new String[] {"ABONO", "UNICA VEZ"}));
+		comboBox_1.setSelectedIndex(0);
+		comboBox_1.setBounds(123, 193, 84, 27);
+		add(comboBox_1);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(132, 155, 52, 27);
-		add(comboBox);
+		JCheckBox chckbxGarantiaExtendida = new JCheckBox("Garantia extendida");
+		chckbxGarantiaExtendida.setBounds(6, 214, 179, 23);
+		add(chckbxGarantiaExtendida);
 		
 		txtGarantia = new JTextField();
 		txtGarantia.setText(garantia);
@@ -114,21 +115,60 @@ public class PublicacionPanel extends JPanel {
 		add(txtGarantia);
 		txtGarantia.setColumns(10);
 		
-		txtTipoContrato = new JTextField();
-		txtTipoContrato.setText(tipoContrato);
-		txtTipoContrato.setBounds(93, 233, 143, 26);
-		add(txtTipoContrato);
-		txtTipoContrato.setColumns(10);
-		
 		txtCertificados = new JTextField();
 		txtCertificados.setText(certificados);
-		txtCertificados.setBounds(85, 263, 143, 26);
+		txtCertificados.setBounds(80, 225, 143, 26);
 		add(txtCertificados);
 		txtCertificados.setColumns(10);
 		
-		JCheckBox chckbxGarantiaExtendida = new JCheckBox("Garantia extendida");
-		chckbxGarantiaExtendida.setBounds(6, 214, 179, 23);
-		add(chckbxGarantiaExtendida);
+		comboBox_2 = new JComboBox<String>();
+		comboBox_2.setModel(new DefaultComboBoxModel<String>(new String[] {"DEBITO", "CREDITO", "EFECTIVO"}));
+		comboBox_2.setSelectedIndex(0);
+		comboBox_2.setBounds(338, 28, 84, 27);
+		add(comboBox_2);
+		
+		txtGarantia.setVisible(false);
+		txtCertificados.setVisible(false);
+		chckbxGarantiaExtendida.setVisible(false);
+		comboBox_1.setVisible(false);
+		lblGarantia.setVisible(false);
+		lblTipoContrato.setVisible(false);
+		lblCertificados.setVisible(false);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"SERVICIO", "PRODUCTO"}));
+		comboBox.setSelectedIndex(0);
+		comboBox.setBounds(123, 155, 84, 27);
+		add(comboBox);
+		
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if (comboBox.getSelectedIndex() == 0)
+				{
+					lblTipoContrato.setVisible(true);
+					txtCertificados.setVisible(true);
+					lblCertificados.setVisible(true);
+					comboBox_1.setVisible(true);
+					txtGarantia.setVisible(false);
+					chckbxGarantiaExtendida.setVisible(false);
+					lblGarantia.setVisible(false);		
+				}
+				else
+				{
+					txtGarantia.setVisible(true);
+					txtCertificados.setVisible(false);
+					chckbxGarantiaExtendida.setVisible(true);
+					comboBox_1.setVisible(false);
+					lblGarantia.setVisible(true);
+					lblTipoContrato.setVisible(false);
+					lblCertificados.setVisible(false);
+					
+				}
+				
+			}
+		});
 	}
 	
 	public String getTitulo() {
@@ -139,17 +179,9 @@ public class PublicacionPanel extends JPanel {
 		return txtrDescripcion.getText();
 	}
 	
-	public String getFormaPago() {
-		return txtFormaPago.getText();
-	}
-
 	public String getGarantia() {
 		return txtGarantia.getText();
-	}
-	
-	public String getTipoContrato() {
-		return txtTipoContrato.getText();
-	}
+	}	
 	
 	public String getCertificados() {
 		return txtCertificados.getText();
@@ -159,5 +191,13 @@ public class PublicacionPanel extends JPanel {
 		return Float.valueOf(txtPrecio.getText());
 	}
 	
+	public String getFormaPago(){
+		return comboBox_2.getSelectedItem().toString();
+		
+	}
 	
+	public String getTipoContrato(){
+		return comboBox_1.getSelectedItem().toString();
+	
+	}
 }
