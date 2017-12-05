@@ -1,8 +1,8 @@
 package TPO.vista;
 
 import TPO.controlador.Mercado;
-import modelo.Usuario;
-import vista.MainAdminView;
+import TPO.modelo.Usuario;
+import TPO.vista.MainAdminView;
 
 import java.awt.Window.Type;
 import java.awt.event.ActionEvent;

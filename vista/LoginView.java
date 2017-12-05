@@ -1,8 +1,8 @@
 package TPO.vista;
 import TPO.controlador.Mercado;
 import TPO.vista.MainView;
-import vista.LoginView;
-import vista.MainAdminView;
+import TPO.vista.LoginView;
+import TPO.vista.MainAdminView;
 
 import java.awt.EventQueue;
 

@@ -3,7 +3,7 @@ package TPO.vista;
 import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
 import TPO.modelo.VentaInmediata;
-import vista.PublicacionPanel;
+import TPO.vista.PublicacionPanel;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

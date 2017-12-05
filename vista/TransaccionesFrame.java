@@ -9,6 +9,7 @@ import java.awt.event.ComponentEvent;
 import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,7 +30,7 @@ public class TransaccionesFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TransaccionesFrame(Mercado sistema) {
+	public TransaccionesFrame(Mercado sistema, MainView mainView) {
 		this.sistema = sistema;
 		setTitle("Mis transacciones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,6 +77,35 @@ public class TransaccionesFrame extends JFrame {
 		});
 		btnCalificar.setBounds(327, 243, 117, 29);
 		contentPane.add(btnCalificar);
+		
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.setBounds(6, 243, 117, 29);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				mainView.setVisible(true);
+				dispose();
+			}
+		});
+		contentPane.add(btnVolver);
+		
+		JButton btnVerCalificacin = new JButton("Ver calificación");
+		btnVerCalificacin.setBounds(195, 243, 134, 29);
+		btnVerCalificacin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Transaccion currentTransaccion = list.getSelectedValue();
+				if (currentTransaccion == null) {
+					JOptionPane.showMessageDialog(null, "Debe seleccionar una transaccion");
+				} else if(currentTransaccion.getCalificada() == false){
+					JOptionPane.showMessageDialog(null, "Está transacción no fué calificada");
+				} else {					
+					JDialog reputacionDialog = new ReputacionDialog(currentTransaccion.getVendedor());
+					reputacionDialog.setVisible(true);
+//					that.setVisible(false);
+					System.out.println("Selected transaccion: "+currentTransaccion.toString());
+				}
+			}
+		});
+		contentPane.add(btnVerCalificacin);
 	}
 	
 	private DefaultListModel<Transaccion> getTransaccionesModel() {

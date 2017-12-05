@@ -77,15 +77,15 @@ public class Usuario {
 	}
 	// revisarlo
 	
-	public float reputacionVenta(){
+	public float getReputacionVenta(){
 		float total = 0;
-		int cont = 0;
+		int cantidad = this.calificacionesVenta.size();
+		if (cantidad == 0)
+			return 0;
 		for (Calificacion calificacion : calificacionesVenta) {
-			total = total + calificacion.getNotaCalif();
-			cont++;			
+			total = total + calificacion.getNotaCalif();		
 		}
-		float promedio = total/cont;
-		return promedio; //devuelve el promedio de las notas de las calificaciones de venta
+		return total/cantidad; //devuelve el promedio de las notas de las calificaciones de venta
 	}
 	
 	public float reputacionCompra(){
@@ -102,6 +102,10 @@ public class Usuario {
 	public void calificar(Usuario calificador, Transaccion transaccion, int calificacion) {
 		Calificacion newCalificacion = new Calificacion(calificador, transaccion, calificacion, "");
 		this.calificacionesVenta.add(newCalificacion);
+	}
+	
+	public ArrayList<Calificacion> getCalificaciones() {
+		return this.calificacionesVenta;
 	}
 	
 }

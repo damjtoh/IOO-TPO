@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import TPO.controlador.Mercado;
-import vista.MainAdminView;
+import TPO.vista.MainAdminView;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -168,7 +168,7 @@ public class AltaUsuarioView extends JFrame {
 						passwordField.setText("");
 						}
 						else
-							JOptionPane.showMessageDialog(null, "La contraseña no cumple las restricciones, minimo 1 num, 1 mayus, entre 8 y 20 caracteres");
+							JOptionPane.showMessageDialog(null, "La contraseï¿½a no cumple las restricciones, minimo 1 num, 1 mayus, entre 8 y 20 caracteres");
 					}
 				});
 			

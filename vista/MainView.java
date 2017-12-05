@@ -74,11 +74,11 @@ public class MainView extends JFrame {
 		crearVentaFrame.setVisible(false);
 		
 		//Instanciamos el frame de listado de transaccinoes
-		JFrame transaccionesFrame = new TransaccionesFrame(sistema);
+		JFrame transaccionesFrame = new TransaccionesFrame(sistema, this);
 		transaccionesFrame.setVisible(false);
 		
 		//Instanciamos el frame de reputacion
-		JDialog reputacionDialog = new ReputacionDialog();
+		JDialog reputacionDialog = new ReputacionDialog(sistema.getUsuarioActivo());
 		reputacionDialog.setVisible(false);
 		
 		JMenuBar menuBar = new JMenuBar();

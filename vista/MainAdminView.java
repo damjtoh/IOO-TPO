@@ -3,9 +3,9 @@ package TPO.vista;
 import TPO.controlador.Mercado;
 import TPO.modelo.Publicacion;
 import TPO.modelo.Usuario;
-import vista.AltaUsuarioView;
-import vista.MainAdminView;
-import vista.ModificarUsuarioView;
+import TPO.vista.AltaUsuarioView;
+import TPO.vista.MainAdminView;
+import TPO.vista.ModificarUsuarioView;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
